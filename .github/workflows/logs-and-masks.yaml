@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: 'Log Group'
         run: |
-          echo "This is normal log"
+          echo "This is a normal log"
           echo "::group::JavaDetails"
           ${JAVA_HOME_17_X64}/bin/java -XX:+PrintFlagsFinal --version
           echo "::endgroup::"
