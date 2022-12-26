@@ -1,0 +1,24 @@
+name: composite-actions-example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  composite-actions-example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 'Setup JAVA_HOME as Jmeter requires it'
+        run: |
+          echo "JAVA_HOME : ${JAVA_HOME_17_X64}"
+          ${JAVA_HOME_17_X64}/bin/java -version
+          echo "JAVA_HOME=${JAVA_HOME_17_X64}" >> $GITHUB_ENV
+
+      - name: 'Setup Asdf'
+        uses: ./.github/actions/setup-asdf
+
+
+      - name: 'Run Jmeter'
+        run: jmeter --version

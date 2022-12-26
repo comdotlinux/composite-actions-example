@@ -1,0 +1,21 @@
+name: asdf-install
+description: Setup asdf and install the tools from .tool-versions file.
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Setup asdf'
+      uses: asdf-vm/actions/setup@v1
+      with:
+        asdf_branch: v0.10.2
+
+    - name: 'Update asdf plugin install / update'
+      shell: bash
+      run: asdf plugin update --all
+
+    - name: 'Listing Tools that will be installed'
+      shell: bash
+      run: cat .tool-versions
+
+    - name: 'asdf install'
+      uses: asdf-vm/actions/install@v1
