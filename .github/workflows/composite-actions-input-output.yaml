@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  composite-input-output-test:
+    runs-on: ubuntu-latest
+    steps:
+      - id: capturing-step-id
+        uses: ./.github/actions/hello-input-output
+        with:
+          who-to-greet: 'Santa'
+      - name: 'Show The Output'
+        run: echo ${{ steps.capturing-step-id.outputs.random-number }}
