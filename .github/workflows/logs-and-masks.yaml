@@ -1,0 +1,22 @@
+name: logs-and-masks
+on:
+  workflow_dispatch:
+
+jobs:
+  logs-and-masks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Log Group'
+        run: |
+          echo "This is normal log"
+          echo "::group::JavaDetails"
+          ${JAVA_HOME_17_X64}/bin/java -XX:+PrintFlagsFinal --version
+          echo "::endgroup::"
+          echo "This is also a normal log"
+
+      - name: 'Mask Output'
+        run: |
+          export SHOULD_BE_A_SECRET=T3ubad0r
+          echo "The Value of SHOULD_BE_A_SECRET is ${SHOULD_BE_A_SECRET}"
+          echo "::add-mask::${SHOULD_BE_A_SECRET}"
+          echo "The Value of SHOULD_BE_A_SECRET is ${SHOULD_BE_A_SECRET}"
