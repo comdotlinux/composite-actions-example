@@ -19,6 +19,5 @@ jobs:
       - name: 'Setup Asdf'
         uses: ./.github/actions/setup-asdf
 
-
       - name: 'Run Jmeter'
         run: jmeter --version

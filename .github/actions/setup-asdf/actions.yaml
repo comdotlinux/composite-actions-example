@@ -1,4 +1,4 @@
-name: asdf-install
+name: setup-asdf
 description: Setup asdf and install the tools from .tool-versions file.
 
 runs:
