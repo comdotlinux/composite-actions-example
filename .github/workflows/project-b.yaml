@@ -1,0 +1,15 @@
+name: 'Project B'
+
+on:
+  push:
+    paths:
+      - "Project-B/**"
+
+jobs:
+  project-b:
+    uses: comdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@main
+    with:
+      project: Project-B
+      git-ref: ${{ github.sha }}
+    secrets:
+      boo: 'scooby dooby doo'

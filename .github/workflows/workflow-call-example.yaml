@@ -25,6 +25,6 @@ jobs:
         with:
           ref: ${{ inputs.git-ref }}
       - name: 'echo input project'
-        run: 'was called from ${{ inputs.project }} with secret ${{ secrets.boo }}'
+        run: echo 'was called from ${{ inputs.project }} with secret ${{ secrets.boo }}'
       - name: 'Show The README'
         run: cat "${{ inputs.project }}/README.md"
