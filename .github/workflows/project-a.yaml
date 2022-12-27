@@ -7,9 +7,9 @@ on:
 
 jobs:
   project-a:
-    uses: Scomdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@master
+    uses: Scomdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@main
     with:
-      project: company-processor
+      project: Project-A
       git-ref: ${{ github.sha }}
     secrets:
       boo: 'boo boo boo'
