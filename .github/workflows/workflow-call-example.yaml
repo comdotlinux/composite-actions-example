@@ -1,0 +1,30 @@
+run-name: building ${{ inputs.project }} from commit ${{ inputs.git-ref }}
+
+on:
+  workflow_call:
+    inputs:
+      project:
+        type: string
+        description: 'Name Of Project To Build'
+        required: true
+      git-ref:
+        type: string
+        description: 'The branch, tag or SHA to checkout (default is main branch)' # See : https://github.com/actions/checkout/blob/230611dbd0eb52da1e1f4f7bc8bb0c3a339fc8b7/README.md?plain=1#L46
+        required: true
+        default: 'main'
+    secrets:
+      boo:
+        required: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout monorepo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.git-ref }}
+      - name: 'echo input project'
+        run: 'was called from ${{ inputs.project }} with secret ${{ secrets.boo }}'
+      - name: 'Show The README'
+        run: cat "${{ inputs.project }}/README.md"

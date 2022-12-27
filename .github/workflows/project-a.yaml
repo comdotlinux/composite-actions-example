@@ -1,0 +1,15 @@
+name: 'Project A'
+
+on:
+  push:
+    paths:
+      - "Project-A/**"
+
+jobs:
+  project-a:
+    uses: Scomdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@master
+    with:
+      project: company-processor
+      git-ref: ${{ github.sha }}
+    secrets:
+      boo: 'boo boo boo'
