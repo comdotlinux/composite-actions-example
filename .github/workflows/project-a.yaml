@@ -7,7 +7,7 @@ on:
 
 jobs:
   project-a:
-    uses: Scomdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@main
+    uses: comdotlinux/composite-actions-example/.github/workflows/workflow-call-example.yaml@main
     with:
       project: Project-A
       git-ref: ${{ github.sha }}
